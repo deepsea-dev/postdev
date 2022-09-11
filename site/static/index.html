@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap" rel="stylesheet">
   
     <script>
+      let onlyWinners = false;
       const pros = [{"title": "Genopets", "tagline": "Genopets is the world's first Move-to-Earn NFT game that incentivizes players to stay active and earn for free.", "winner": true, "likes": "8453", "comments": "7895"}, {"title": "StepN by Find Satoshi Lab", "tagline": "StepN is a move2earn mobile game. It aims to attract million of non-crypto runners to the crypto realm through playing the game, whilst some game's profit goes to carbon offsetting.", "winner": true, "likes": "1294", "comments": "1254"}, {"title": "Soapy Finance", "tagline": "Building The Future Entrance of DeFi for Community", "winner": false, "likes": "1082", "comments": "896"}, {"title": "Bunny Army", "tagline": "Bunny Army is a decentralized Gamefi+NFT tower-defense game, with excellent experience and income from entertainment. It will firstly launch on OEC.", "winner": false, "likes": "1543", "comments": "498"}]
 
       function generateProjectCardHtml(project) {
@@ -31,7 +32,7 @@
       function populateProjects(projects) {
         console.log('gi')
         let html = '';
-        for (const project of projects) {
+        for (const project of projects.filter(it => !onlyWinners || it.winner == true)) {
           html += generateProjectCardHtml(project);
         }
         const projectContainer = document.getElementById("projects");
@@ -39,9 +40,10 @@
       }
 
       function onOnlyWinnersPressed() {
-        const urlParams = new URLSearchParams(window.location.search);
-        urlParams.set('winners', (urlParams.get('winners') == "false"));
-        window.location.search = urlParams;
+        onlyWinners = !onlyWinners;
+        const button = document.getElementById('winners');
+        button.className = onlyWinners ? 'checked' : ''
+        populateProjects(pros);
       }
     </script>
   </head>
@@ -57,7 +59,7 @@
       <span>Explore projects from Portfolios and hackathons</span>
       <span class="filter">
         <label for="winners">only winners</label>
-        <input type="button" class="{{ 'checked' if onlyWinners }}" id="winners" onclick="onOnlyWinnersPressed()">
+        <input id="winners" type="button" onclick="onOnlyWinnersPressed()">
       </span>
     </div>
 
