@@ -10,7 +10,7 @@ nav {
 }
 
 .logo {
-  height: 50px;
+  height: 36px;
   margin: 8px;
 }
 
@@ -40,7 +40,7 @@ nav {
 
 .project-image {
   height: 156px;
-  background-color: gainsboro;
+  background-color: rgb(233, 233, 233);
 }
 
 .project-caption {
@@ -60,6 +60,15 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: gainsboro;
+  background-color: rgb(233, 233, 233);
   height: 40px;
+}
+
+.project-footer > div {
+  display: flex;
+  column-gap: 8px;
+}
+
+.icon {
+  color: rgb(170, 170, 170);
 }

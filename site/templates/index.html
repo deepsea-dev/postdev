@@ -2,6 +2,8 @@
 <html>
   <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   </head>
   <body>
     <nav>
@@ -21,8 +23,8 @@
             <div class="project-tagline">{{ project.tagline }}</div>
           </div>
           <div class="project-footer">
-            <div>likes: {{ project.likes }}</div>
-            <div>comments: {{ project.comments }}</div>
+            <div><span class="material-icons icon">favorite</span> {{ project.likes }}</div>
+            <div><span class="material-icons icon">chat</span> {{ project.comments }}</div>
           </div>
         </div>
       {% endfor %}
