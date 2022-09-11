@@ -2,7 +2,7 @@ from aitextgen import aitextgen
 import re
 import json
 
-ai = aitextgen(model_folder="./")
+ai = aitextgen(model_folder="./", verbose=True)
 
 def mapProject(projectString):
     values = projectString.split(" | ")
