@@ -9,8 +9,6 @@
   
     <script>
       let onlyWinners = false;
-      const pros = [{"title": "Genopets", "tagline": "Genopets is the world's first Move-to-Earn NFT game that incentivizes players to stay active and earn for free.", "winner": true, "likes": "8453", "comments": "7895"}, {"title": "StepN by Find Satoshi Lab", "tagline": "StepN is a move2earn mobile game. It aims to attract million of non-crypto runners to the crypto realm through playing the game, whilst some game's profit goes to carbon offsetting.", "winner": true, "likes": "1294", "comments": "1254"}, {"title": "Soapy Finance", "tagline": "Building The Future Entrance of DeFi for Community", "winner": false, "likes": "1082", "comments": "896"}, {"title": "Bunny Army", "tagline": "Bunny Army is a decentralized Gamefi+NFT tower-defense game, with excellent experience and income from entertainment. It will firstly launch on OEC.", "winner": false, "likes": "1543", "comments": "498"}]
-
       function generateProjectCardHtml(project) {
         return `
           <div>
@@ -29,8 +27,9 @@
         </div>`
       }
 
-      function populateProjects(projects) {
-        console.log('gi')
+      async function populateProjects() {
+        const response = await fetch('/projects.json');
+        const projects = await response.json();
         let html = '';
         for (const project of projects.filter(it => !onlyWinners || it.winner == true)) {
           html += generateProjectCardHtml(project);
@@ -43,11 +42,11 @@
         onlyWinners = !onlyWinners;
         const button = document.getElementById('winners');
         button.className = onlyWinners ? 'checked' : ''
-        populateProjects(pros);
+        populateProjects();
       }
     </script>
   </head>
-  <body onload="populateProjects(pros)">
+  <body onload="populateProjects()">
     <nav>
       <img src="/logo.png"/>
       <a href="https://github.com/deepsea-dev/postdev">
