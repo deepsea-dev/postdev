@@ -19,7 +19,7 @@
         <div>
           {% if project.winner %}
             <div class="winner-banner">
-              <img src="https://q9k6x7m8.stackpathcdn.com/assets/shared/software/winner-ribbon-d6a3513950ca29607c8d8682f419dd99.png"/>
+              <img src="{{ url_for('static', filename='winner.png') }}"/>
             </div>
           {% endif %}
           <div class="project">
