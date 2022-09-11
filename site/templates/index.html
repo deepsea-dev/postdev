@@ -2,10 +2,14 @@
 <html>
   <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap" rel="stylesheet">
   </head>
   <body>
     <nav>
-      PostDev
+      <img class="logo" src="{{ url_for('static', filename='logo.png') }}"/>
     </nav>
     
     <div class="explore">
@@ -14,15 +18,22 @@
 
     <div class="projects">
       {% for project in projects %}
-        <div class="project">
-          <div class="project-image"></div>
-          <div class="project-caption">
-            <div class="project-header">{{ project.title }}</div>
-            <div class="project-tagline">{{ project.tagline }}</div>
-          </div>
-          <div class="project-footer">
-            <div>likes: {{ project.likes }}</div>
-            <div>comments: {{ project.comments }}</div>
+        <div>
+          {% if project.winner %}
+            <div class="winner-banner">
+              <img src="{{ url_for('static', filename='winner.png') }}"/>
+            </div>
+          {% endif %}
+          <div class="project">
+            <div class="project-image"></div>
+            <div class="project-caption">
+              <div class="project-header">{{ project.title }}</div>
+              <div class="project-tagline">{{ project.tagline }}</div>
+            </div>
+            <div class="project-footer">
+              <div><span class="material-icons icon">favorite</span> {{ project.likes }}</div>
+              <div><span class="material-icons icon">chat</span> {{ project.comments }}</div>
+            </div>
           </div>
         </div>
       {% endfor %}

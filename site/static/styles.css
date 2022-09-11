@@ -1,17 +1,24 @@
 body {
   margin: 0;
+  background-color: #32302f;
+  color: white;
+  font-family: 'Raleway', sans-serif;
 }
 
 nav {
-  background-color: white;
-  width: 235px;
-  height: 62px;
-  font-size: 40px;
+  display: flex;
+  background-color: #242325;
   padding: 0 16px;
+  align-content: center;
+}
+
+.logo {
+  height: 36px;
+  margin: 24px;
 }
 
 .explore {
-  background-color: #003e54;
+  background-color: #d65d0e;
   color: white;
   font-size: 32px;
   padding: 32px;
@@ -21,30 +28,34 @@ nav {
 .projects {
   display: flex;
   flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: 1200px;
   justify-content: space-around;
   column-gap: 16px;
-  row-gap: 16px;
+  row-gap: 24px;
   margin: auto;
   margin-top: 32px;
 }
 
 .project {
-  border: 1px solid gray ;
+  background-color: #bdae93;
+  border: 2px solid gray ;
   width: 235px;
+  border-radius: 8px;
 }
 
 .project-image {
   height: 156px;
-  background-color: gainsboro;
+  background-color: rgb(233, 233, 233);
+  border-radius: 8px;
 }
 
 .project-caption {
-  padding: 11px 8px;
+  padding: 11px 12px;
 }
 
 .project-header {
-  font-weight: 600;
+  font-weight: 800;
+  font-size: large;
 }
 
 .project-tagline {
@@ -56,6 +67,24 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: gainsboro;
+  background-color:#fbf1c7;
   height: 40px;
+  border-radius: 8px;
+  color: #928374;
+}
+
+.project-footer > div {
+  display: flex;
+  column-gap: 8px;
+}
+
+.winner-banner {
+  position: relative;
+}
+
+.winner-banner > img {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  z-index: 1;
 }
