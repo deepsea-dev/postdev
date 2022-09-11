@@ -14,9 +14,9 @@ def mapProject(projectString):
             "comments": values[2]
     }
 
-def createBatch():
+def createBatch(size=100):
     batch = []
-    while len(batch) < 100:
+    while len(batch) < size:
         generated = ai.generate(n = 10, return_as_list=True)
         generated = list(filter(lambda x: re.search(r"(True|False) \| \d+ \| \d+ \| .*? \| .*", x) != None, generated))
         generated = list(map(mapProject, generated))
