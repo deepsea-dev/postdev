@@ -3,15 +3,15 @@ import re
 from aitextgen import aitextgen
 ai = aitextgen(model_folder=".", to_gpu=False)
 
-def generateProjects():
+def generateProjects(onlyWinners = False):
   generated = []
   while len(generated) < 4:
-    line = ai.generate_one().rstrip()
+    line = ai.generate_one(prompt='True |' if onlyWinners else '').rstrip()
     print(line)
     match = re.search(r"(True|False) \| \d+ \| \d+ \| .*? \| .*", line)
     if match == None: continue
 
-    values = line.split("|")
+    values = line.split(" | ")
     generated.append({
       "title": values[3],
       "tagline": values[4],
@@ -28,6 +28,6 @@ app = Flask(__name__)
 @app.route('/')
 def index():
   onlyWinners = request.args.get('winners', default=False, type=lambda v: v.lower() == 'true')
-  projects = generateProjects()
+  projects = generateProjects(onlyWinners)
   print(projects)
   return render_template('index.html', projects=projects, onlyWinners=onlyWinners)
