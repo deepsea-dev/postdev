@@ -17,9 +17,11 @@
     <div class="projects">
       {% for project in projects %}
         <div>
-          <div class="winner-banner">
-            <img src="https://q9k6x7m8.stackpathcdn.com/assets/shared/software/winner-ribbon-d6a3513950ca29607c8d8682f419dd99.png"/>
-          </div>
+          {% if project.winner %}
+            <div class="winner-banner">
+              <img src="https://q9k6x7m8.stackpathcdn.com/assets/shared/software/winner-ribbon-d6a3513950ca29607c8d8682f419dd99.png"/>
+            </div>
+          {% endif %}
           <div class="project">
             <div class="project-image"></div>
             <div class="project-caption">
