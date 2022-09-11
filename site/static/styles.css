@@ -3,11 +3,15 @@ body {
 }
 
 nav {
+  display: flex;
   background-color: white;
-  width: 235px;
-  height: 62px;
-  font-size: 40px;
   padding: 0 16px;
+  align-content: center;
+}
+
+.logo {
+  height: 50px;
+  margin: 8px;
 }
 
 .explore {
