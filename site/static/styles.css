@@ -23,7 +23,7 @@ nav {
 }
 
 .project {
-  border: 1px  solid gray ;
+  border: 1px solid gray ;
   width: 235px;
 }
 
@@ -38,4 +38,17 @@ nav {
 
 .project-header {
   font-weight: 600;
+}
+
+.project-tagline {
+  height: 2.8em;
+  overflow: hidden;
+}
+
+.project-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: gainsboro;
+  height: 40px;
 }
