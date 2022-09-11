@@ -41,21 +41,14 @@ nav > img {
   font-weight: 700;
 }
 
-.filter-button {
-  border: 2px solid gray;
-  margin: 0 32px;
-  font-size: 24px;
-  padding: 8px 32px;
-  font-weight: 700;
-  background-color: #fbf1c7;
-  border-radius: 8px;
-  color: #928374;
-  transition: 100ms linear;
+.filter {
+  display: flex;
+  align-items: center;
 }
 
-.filter-button:hover {
-  background-color: #ebdbb2;
-  transition: 100ms linear;
+.filter input[type="checkbox"] {
+  margin-left: 32px;
+  transform: scale(2);
 }
 
 .projects {
