@@ -1,7 +1,8 @@
 body {
   margin: 0;
-  background-color: #242325;
+  background-color: #32302f;
   color: white;
+  font-family: 'Raleway', sans-serif;
 }
 
 nav {
@@ -17,7 +18,7 @@ nav {
 }
 
 .explore {
-  background-color: #477890;
+  background-color: #d65d0e;
   color: white;
   font-size: 32px;
   padding: 32px;
@@ -36,7 +37,7 @@ nav {
 }
 
 .project {
-  background-color: #180052;
+  background-color: #bdae93;
   border: 2px solid gray ;
   width: 235px;
   border-radius: 8px;
@@ -53,7 +54,8 @@ nav {
 }
 
 .project-header {
-  font-weight: 600;
+  font-weight: 800;
+  font-size: large;
 }
 
 .project-tagline {
@@ -65,19 +67,15 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-weight: 800;
-  background-color:#421042;
+  background-color:#fbf1c7;
   height: 40px;
   border-radius: 8px;
+  color: #928374;
 }
 
 .project-footer > div {
   display: flex;
   column-gap: 8px;
-}
-
-.icon {
-  color: rgb(170, 170, 170);
 }
 
 .winner-banner {
