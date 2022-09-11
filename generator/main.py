@@ -21,7 +21,9 @@ def createBatch(size=100):
         generated = list(filter(lambda x: re.search(r"(True|False) \| \d+ \| \d+ \| .*? \| .*", x) != None, generated))
         generated = list(map(mapProject, generated))
         batch += generated
-    
+
+        print("{}/{} generated.".format(len(batch), size))
+
     return batch
 
 batch = createBatch()
