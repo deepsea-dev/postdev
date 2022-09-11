@@ -72,3 +72,14 @@ nav {
 .icon {
   color: rgb(170, 170, 170);
 }
+
+.winner-banner {
+  position: relative;
+}
+
+.winner-banner > img {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  z-index: 1;
+}
