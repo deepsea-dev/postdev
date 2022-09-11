@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import re
 from aitextgen import aitextgen
 ai = aitextgen(model_folder=".", to_gpu=False)
@@ -25,7 +25,8 @@ def generateProjects():
 
 app = Flask(__name__)
 
-@app.get('/')
+@app.route('/')
 def index():
+  onlyWinners = request.args.get('winners', default=False, type=lambda v: v.lower() == 'true')
   projects = generateProjects()
-  return render_template('index.html', projects=projects)
+  return render_template('index.html', projects=projects, onlyWinners=onlyWinners)

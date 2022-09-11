@@ -6,6 +6,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap" rel="stylesheet">
+  
+    <script>
+      function onOnlyWinnersPressed() {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('winners', (urlParams.get('winners') == "false"));
+        window.location.search = urlParams;
+      }
+    </script>
   </head>
   <body>
     <nav>
@@ -19,7 +27,7 @@
       <span>Explore projects from Portfolios and hackathons</span>
       <span class="filter">
         <label for="winners">only winners</label>
-        <input type="checkbox" id="winners">
+        <input type="button" class="{{ 'checked' if onlyWinners }}" id="winners" onclick="onOnlyWinnersPressed()">
       </span>
     </div>
 
