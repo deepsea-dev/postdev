@@ -1,11 +1,10 @@
 body {
-  background-color: antiquewhite;
   margin: 0;
 }
 
 nav {
   background-color: white;
-  width: auto;
+  width: 235px;
   height: 62px;
   font-size: 40px;
   padding: 0 16px;
@@ -17,4 +16,26 @@ nav {
   font-size: 32px;
   padding: 32px;
   font-weight: 700;
+}
+
+.projects {
+
+}
+
+.project {
+  border: 1px  solid gray ;
+  width: 235px;
+}
+
+.project-image {
+  height: 156px;
+  background-color: gainsboro;
+}
+
+.project-caption {
+  padding: 11px 8px;
+}
+
+.project-header {
+  font-weight: 600;
 }
