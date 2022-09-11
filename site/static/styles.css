@@ -73,7 +73,7 @@ nav > img {
 .project {
   background-color: #bdae93;
   border: 2px solid gray;
-  width: 235px;
+  width: 260px;
   border-radius: 8px;
 }
 
@@ -93,7 +93,7 @@ nav > img {
 }
 
 .project-tagline {
-  height: 2.8em;
+  height: 8em;
   overflow: hidden;
 }
 
