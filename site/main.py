@@ -11,5 +11,5 @@ def index():
       "winner": True,
       "likes": "8453",
       "comments": "7895"}
-  ] * 10
+  ] * 12
   return render_template('index.html', projects=projects)
