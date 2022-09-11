@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <nav>
+      PostDev
+    </nav>
+    
+    <div class="explore">
+      Explore projects from Portfolios and hackathons
+    </div>
+
+    <div class="projects">
+      {% for project in projects %}
+        <div class="project">
+          <div class="project-image"></div>
+          <div class="project-caption">
+            <div class="project-header">{{ project.title }}</div>
+            <div class="project-tagline">{{ project.tagline }}</div>
+          </div>
+          <div class="project-footer">
+            <div>likes: {{ project.likes }}</div>
+            <div>comments: {{ project.comments }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

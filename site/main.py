@@ -1,7 +1,15 @@
-from flask import Flask
+from flask import Flask, render_template
 
-app = Flask('postdev')
+app = Flask(__name__)
 
-@app.route('/')
+@app.get('/')
 def index():
-  return "hello world"
+  projects = [
+    {
+      "title": "Octocatch",
+      "tagline": "collect falling items at the bottom of the ocean as an octopus",
+      "winner": True,
+      "likes": "8453",
+      "comments": "7895"}
+  ] * 10
+  return render_template('index.html', projects=projects)

@@ -12,4 +12,4 @@ flask = "*"
 python_version = "3.10"
 
 [scripts]
-dev = "flask --app main run"
+dev = "flask --app main --debug run"

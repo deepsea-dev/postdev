@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+}
+
+nav {
+  background-color: white;
+  width: 235px;
+  height: 62px;
+  font-size: 40px;
+  padding: 0 16px;
+}
+
+.explore {
+  background-color: #003e54;
+  color: white;
+  font-size: 32px;
+  padding: 32px;
+  font-weight: 700;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  justify-content: space-around;
+  column-gap: 16px;
+  row-gap: 16px;
+  margin: auto;
+  margin-top: 32px;
+}
+
+.project {
+  border: 1px solid gray ;
+  width: 235px;
+}
+
+.project-image {
+  height: 156px;
+  background-color: gainsboro;
+}
+
+.project-caption {
+  padding: 11px 8px;
+}
+
+.project-header {
+  font-weight: 600;
+}
+
+.project-tagline {
+  height: 2.8em;
+  overflow: hidden;
+}
+
+.project-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: gainsboro;
+  height: 40px;
+}
