@@ -13,17 +13,19 @@
     </div>
 
     <div class="projects">
-      <div class="project">
-        <div class="project-image"></div>
-        <div class="project-caption">
-          <div class="project-header">Octocatch</div>
-          <div class="project-tagline">collect falling items at the bottom of the ocean as an octopus </div>
+      {% for project in projects %}
+        <div class="project">
+          <div class="project-image"></div>
+          <div class="project-caption">
+            <div class="project-header">{{ project.title }}</div>
+            <div class="project-tagline">{{ project.tagline }}</div>
+          </div>
+          <div class="project-footer">
+            <div>likes: {{ project.likes }}</div>
+            <div>comments: {{ project.comments }}</div>
+          </div>
         </div>
-        <div class="project-footer">
-          <div>likes: 12</div>
-          <div>comments: 1</div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </body>
 </html>

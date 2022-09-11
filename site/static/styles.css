@@ -19,7 +19,14 @@ nav {
 }
 
 .projects {
-
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  justify-content: space-around;
+  column-gap: 16px;
+  row-gap: 16px;
+  margin: auto;
+  margin-top: 32px;
 }
 
 .project {
