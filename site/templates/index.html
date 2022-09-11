@@ -6,14 +6,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap" rel="stylesheet">
+  
+    <script>
+      function onOnlyWinnersPressed() {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('winners', (urlParams.get('winners') == "false"));
+        window.location.search = urlParams;
+      }
+    </script>
   </head>
   <body>
     <nav>
-      <img class="logo" src="{{ url_for('static', filename='logo.png') }}"/>
+      <img src="{{ url_for('static', filename='logo.png') }}"/>
+      <a href="https://github.com/deepsea-dev/postdev">
+        <img class="github" src="{{ url_for('static', filename='github.png') }}"/>
+      </a>
     </nav>
     
     <div class="explore">
-      Explore projects from Portfolios and hackathons
+      <span>Explore projects from Portfolios and hackathons</span>
+      <span class="filter">
+        <label for="winners">only winners</label>
+        <input type="button" class="{{ 'checked' if onlyWinners }}" id="winners" onclick="onOnlyWinnersPressed()">
+      </span>
     </div>
 
     <div class="projects">
