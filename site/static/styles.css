@@ -10,3 +10,11 @@ nav {
   font-size: 40px;
   padding: 0 16px;
 }
+
+.explore {
+  background-color: #003e54;
+  color: white;
+  font-size: 32px;
+  padding: 32px;
+  font-weight: 700;
+}
