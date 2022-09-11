@@ -20,7 +20,10 @@ while len(entries) < 5000:
     projects = [
         {
             "title": project.figure.figcaption.div.h5.text.strip(),
-            "tagline": project.figure.figcaption.div.p.text.strip()
+            "tagline": project.figure.figcaption.div.p.text.strip(),
+            "winner": project.find("img", {"class": "winner"}) != None,
+            "likes": project.find("span", {"class": "like-count"}).text.strip(),
+            "comments": project.find("span", {"class": "comment-count"}).text.strip()
         }
 
         for project in projects
