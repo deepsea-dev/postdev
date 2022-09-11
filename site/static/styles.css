@@ -1,9 +1,12 @@
 body {
   background-color: antiquewhite;
+  margin: 0;
 }
 
 nav {
-  background-color: saddlebrown;
+  background-color: white;
   width: auto;
   height: 62px;
+  font-size: 40px;
+  padding: 0 16px;
 }
