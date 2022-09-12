@@ -127,7 +127,15 @@ nav > img {
 
 #update-time {
   color: #928374;
-  margin: 8px 32px;
+  margin: 12px 32px;
   font-weight: 700;
-  text-align: end;
+  text-align: center;
+  margin-top: 200px;
+}
+
+.docked {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
 }
