@@ -6,6 +6,7 @@ import uuid
 import re
 import json
 import requests
+from time import sleep
 
 PIXABAY_URL = "https://pixabay.com/api/"
 
@@ -88,6 +89,11 @@ for index, project in enumerate(content["projects"]):
 
     print(response)
     print(str(response.text))
+
+    while response.status_code != 200:
+        print("non 200 response code sleeping for 60s")
+        sleep(60)
+        response = requests.get(PIXABAY_URL, search_params)
 
     response = response.json()
     
