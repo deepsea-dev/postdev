@@ -1,3 +1,4 @@
+from time import time
 from aitextgen import aitextgen
 import re
 import json
@@ -26,7 +27,10 @@ def createBatch(size=100):
 
     return batch
 
-batch = createBatch()
-with open("./projects.json", "w") as batchFile:
-    json.dump(batch, batchFile)
-    batchFile.close()
+content = {
+    "time": int(time()),
+    "projects": createBatch()
+}
+with open("./projects.json", "w") as projectsFile:
+    json.dump(content, projectsFile)
+    projectsFile.close()
