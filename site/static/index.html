@@ -7,60 +7,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap" rel="stylesheet">
   
-    <script>
-      let onlyWinners = false;
-      function generateProjectCardHtml(project) {
-        return `
-          <div>
-            ${project.winner ? '<div class="winner-banner"><img src="/winner.png"/></div>' : ''}
-          <div class="project">
-            <div class="project-image"></div>
-            <div class="project-caption">
-              <div class="project-header">${ project.title }</div>
-              <div class="project-tagline">${ project.tagline }</div>
-            </div>
-            <div class="project-footer">
-              <div><span class="material-icons icon">favorite</span> ${ project.likes }</div>
-              <div><span class="material-icons icon">chat</span> ${ project.comments }</div>
-            </div>
-          </div>
-        </div>`
-      }
-
-      async function populateProjects() {
-        const response = await (await fetch('/projects.json')).json();
-        const projects = response.projects;
-        let html = '';
-        for (const project of projects.filter(it => !onlyWinners || it.winner == true)) {
-          html += generateProjectCardHtml(project);
-        }
-        const projectContainer = document.getElementById("projects");
-        projectContainer.innerHTML = html;
-      }
-
-      function onOnlyWinnersPressed() {
-        onlyWinners = !onlyWinners;
-        const button = document.getElementById('winners');
-        button.className = onlyWinners ? 'checked' : ''
-        populateProjects();
-      }
-    </script>
+    <script src="index.js"></script>
   </head>
   <body onload="populateProjects()">
-    <nav>
-      <img src="/logo.png"/>
-      <a href="https://github.com/deepsea-dev/postdev">
-        <img class="github" src="/github.png"/>
-      </a>
-    </nav>
-    
-    <div class="explore">
-      <span>Explore projects from Portfolios and hackathons</span>
-      <span class="filter">
-        <label for="winners">only winners</label>
-        <input id="winners" type="button" onclick="onOnlyWinnersPressed()">
-      </span>
+    <div class="docked">
+      <nav>
+        <img src="/logo.png"/>
+        <a href="https://github.com/deepsea-dev/postdev">
+          <img class="github" src="/github.png"/>
+        </a>
+      </nav>
+      
+      <div class="explore">
+        <span>Explore projects from Portfolios and hackathons</span>
+        <span class="filter">
+          <label for="winners">only winners</label>
+          <input id="winners" type="button" onclick="onOnlyWinnersPressed()">
+        </span>
+      </div>
     </div>
+
+    <div id="update-time">Last batch generated at: --:--</div>
 
     <div id="projects" class="projects">
         
