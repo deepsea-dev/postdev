@@ -18,6 +18,8 @@ if (not path.exists("./images/")):
     makedirs("./images/")
 
 # \/\/\/\/ Testing - Please remove afterwards \/\/\/\/
+print("Last 4 digits of key " + PIXABAY_KEY[-4:])
+
 example = {
     "title": "space",
     "tagline": "Space is further than the sky",
