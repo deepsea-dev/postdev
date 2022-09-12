@@ -17,7 +17,7 @@ if (PIXABAY_KEY == None): raise MissingEnivornmentVariable("PIXABAY_KEY is not s
 if (not path.exists("./images/")):
     makedirs("./images/")
 
-ai = aitextgen(model_folder="./", verbose=True)
+#ai = aitextgen(model_folder="./", verbose=True)
 
 def mapProject(projectString):
     values = projectString.split(" | ")
@@ -44,9 +44,22 @@ def createBatch(size=100):
     print("Batch creation finished")
     return batch
 
+
+print("first 4 digits of key " + PIXABAY_KEY[:4])
+print("Last 4 digits of key " + PIXABAY_KEY[-4:])
+
+example = {
+    "title": "space",
+    "tagline": "Space is further than the sky",
+    "winner": True,
+    "likes": "100",
+    "comments": "200",
+    "fileID": ""
+}
+
 content = {
     "time": int(time()),
-    "projects": createBatch()
+    "projects": [example]#createBatch()
 }
 
 def downloadImage(imageURL):
@@ -69,7 +82,14 @@ SEARCH_PARAMS = {
 
 for index, project in enumerate(content["projects"]):
     search_params = {**SEARCH_PARAMS, **{"q": project["title"]}}
-    response = requests.get(PIXABAY_URL, search_params).json()
+    print(str(search_params).replace(PIXABAY_KEY, 'key'))
+
+    response = requests.get(PIXABAY_URL, search_params)
+
+    print(response)
+    print(str(response.raw))
+
+    response = response.json()
     
     if (response["totalHits"] > 0):
         fileName, fileID = downloadImage(response["hits"][0]["previewURL"])
