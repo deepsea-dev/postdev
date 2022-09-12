@@ -17,6 +17,52 @@ if (PIXABAY_KEY == None): raise MissingEnivornmentVariable("PIXABAY_KEY is not s
 if (not path.exists("./images/")):
     makedirs("./images/")
 
+# \/\/\/\/ Testing - Please remove afterwards \/\/\/\/
+example = {
+    "title": "space",
+    "tagline": "Space is further than the sky",
+    "winner": True,
+    "likes": "100",
+    "comments": "200",
+    "fileID": ""
+}
+
+def downloadImage(imageURL):
+    print("The image url we got was " + imageURL)
+    fileID = str(uuid.uuid4())
+    print("The fileID is " + fileID)
+    fileName = fileID + ".png"
+    print("The fileName is " + fileName)
+    imageData = requests.get(imageURL).content
+    with open("./images/" + fileName, "wb") as imageFile:
+        imageFile.write(imageData)
+        imageFile.close()
+
+    return fileName, fileID
+
+SEARCH_PARAMS = {
+    "key": PIXABAY_KEY,
+    "lang": "en",
+    "image_type": "photo",
+    "orientation": "horizontal",
+    "safesearch": "true",
+}
+
+
+search_params = {**SEARCH_PARAMS, **{"q": example["title"]}}
+response = requests.get(PIXABAY_URL, search_params)
+print("Response: " + response)
+response = response.json()
+print("Response (JSON): " + response)
+
+if (response["totalHits"] > 0):
+    fileName, fileID = downloadImage(response["hits"][0]["previewURL"])
+
+print("Does the api key exist?", PIXABAY_KEY != None)
+
+exit(1)
+# /\/\/\/\ Testing - Please remove afterwards /\/\/\/\
+
 ai = aitextgen(model_folder="./", verbose=True)
 
 def mapProject(projectString):
