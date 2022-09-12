@@ -67,7 +67,7 @@ nav > img {
   column-gap: 16px;
   row-gap: 24px;
   margin: auto;
-  margin-top: 32px;
+  //margin-top: 32px;
 }
 
 .project {
@@ -91,6 +91,7 @@ nav > img {
   font-weight: 800;
   font-size: large;
   overflow: hidden;
+  height: 1.5em;
 }
 
 .project-tagline {
@@ -122,4 +123,11 @@ nav > img {
   top: -2px;
   left: -2px;
   z-index: 1;
+}
+
+#update-time {
+  color: #928374;
+  margin: 8px 32px;
+  font-weight: 700;
+  text-align: end;
 }
