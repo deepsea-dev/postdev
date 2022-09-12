@@ -50,6 +50,8 @@ jobs:
         run: |
           pipenv install
       - name: Run projects generator
+        env:
+          PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
         working-directory: ./generator
         run: |
           pipenv run python ./main.py
