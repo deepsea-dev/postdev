@@ -6,7 +6,7 @@ function generateProjectCardHtml(project) {
       ${project.winner ? '<div class="winner-banner"><img src="/winner.png"/></div>' : ''}
     <div class="project">
       <div class="project-image">
-        <img src="/placeholder.png" />
+        <img src="images/${ project.fileID != "" ? project.fileID : "placeholder"}.png" />
       </div>
       <div class="project-caption">
         <div class="project-header">${ project.title }</div>
