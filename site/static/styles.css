@@ -90,6 +90,7 @@ nav > img {
 .project-header {
   font-weight: 800;
   font-size: large;
+  overflow: hidden;
 }
 
 .project-tagline {
