@@ -17,7 +17,7 @@ if (PIXABAY_KEY == None): raise MissingEnivornmentVariable("PIXABAY_KEY is not s
 if (not path.exists("./images/")):
     makedirs("./images/")
 
-#ai = aitextgen(model_folder="./", verbose=True)
+ai = aitextgen(model_folder="./", verbose=True)
 
 def mapProject(projectString):
     values = projectString.split(" | ")
@@ -59,7 +59,7 @@ example = {
 
 content = {
     "time": int(time()),
-    "projects": [example]#createBatch()
+    "projects": createBatch()
 }
 
 def downloadImage(imageURL):
