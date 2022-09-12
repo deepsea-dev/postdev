@@ -19,8 +19,14 @@ function generateProjectCardHtml(project) {
 }
 
 async function populateProjects() {
-  const response = await fetch('/projects.json');
-  const projects = (await response.json()).projects;
+  const response = await (await fetch('/projects.json')).json();
+  const projects = response.projects;
+  const time = new Date(parseInt(response.time) * 1000);
+
+  const updateTime = document.getElementById('update-time');
+  updateTime.innerHTML = `Last batch generated at: ${time.getHours()}:${time.getMinutes().toString().padStart(2, '0')}`;
+  console.log(time)
+
   let html = '';
   for (const project of projects.filter(it => !onlyWinners || it.winner == true)) {
     html += generateProjectCardHtml(project);
