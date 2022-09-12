@@ -1,4 +1,4 @@
-# postdev - the mirror of devpost
+# postdev - the magic mirror of devpost
 A gpt-2 powered hackathon project idea generator. With devpost you dev then post, but these are posts for you to dev. We even predict if the projects are going to win.
 
 ![a orange accented dark themed website with a grid of hackathon projects](/screenshot.png)
