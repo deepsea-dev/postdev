@@ -28,8 +28,8 @@
       }
 
       async function populateProjects() {
-        const response = await fetch('/projects.json');
-        const projects = await response.json();
+        const response = await (await fetch('/projects.json')).json();
+        const projects = response.projects;
         let html = '';
         for (const project of projects.filter(it => !onlyWinners || it.winner == true)) {
           html += generateProjectCardHtml(project);
