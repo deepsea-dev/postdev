@@ -30,7 +30,7 @@ def mapProject(projectString):
             "fileID": ""
     }
 
-def createBatch(size=5):
+def createBatch(size=100):
     batch = []
     print("Creating batch...")
     while len(batch) < size:

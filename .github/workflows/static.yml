@@ -56,6 +56,9 @@ jobs:
       - name: Copy projects.json
         run: |
           mv ./generator/projects.json ./site/static/projects.json
+      - name: Copy images to site
+        run: |
+          cp --recursive ./generator/images ./site/static/
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
