@@ -45,15 +45,16 @@ SEARCH_PARAMS = {
     "lang": "en",
     "image_type": "photo",
     "orientation": "horizontal",
+    "per_page": 3,
     "safesearch": "true",
 }
 
 
 search_params = {**SEARCH_PARAMS, **{"q": example["title"]}}
 response = requests.get(PIXABAY_URL, search_params)
-print("Response: " + response)
+print("Response: " + str(response))
 response = response.json()
-print("Response (JSON): " + response)
+print("Response (JSON): " + str(response))
 
 if (response["totalHits"] > 0):
     fileName, fileID = downloadImage(response["hits"][0]["previewURL"])
