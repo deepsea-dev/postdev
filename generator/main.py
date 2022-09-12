@@ -87,7 +87,7 @@ for index, project in enumerate(content["projects"]):
     response = requests.get(PIXABAY_URL, search_params)
 
     print(response)
-    print(str(response.raw))
+    print(str(response.text))
 
     response = response.json()
     
