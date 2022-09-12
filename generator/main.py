@@ -1,20 +1,21 @@
-from fileinput import filename
 from time import time
+from urllib import request
 from aitextgen import aitextgen
-from google_images_search import GoogleImagesSearch
-from os import environ
-from os.path import isfile
-import random
+from os import environ, makedirs, path
 import uuid
 import re
 import json
+import requests
+
+PIXABAY_URL = "https://pixabay.com/api/"
 
 class MissingEnivornmentVariable(Exception): pass
 
-IMAGES_API_KEY = environ.get("IMAGES_API_KEY")
-IMAGES_CX = environ.get("IMAGES_CX")
-if (IMAGES_API_KEY == None): raise MissingEnivornmentVariable("IMAGES_API_KEY is not set")
-if (IMAGES_CX == None): raise MissingEnivornmentVariable("IMAGES_CX is not set")
+PIXABAY_KEY = environ.get("PIXABAY_KEY")
+if (PIXABAY_KEY == None): raise MissingEnivornmentVariable("PIXABAY_KEY is not set")
+
+if (not path.exists("./images/")):
+    makedirs("./images/")
 
 ai = aitextgen(model_folder="./", verbose=True)
 
@@ -25,7 +26,8 @@ def mapProject(projectString):
             "tagline": values[4].rstrip(),
             "winner": values[0] == "True",
             "likes": values[1],
-            "comments": values[2]
+            "comments": values[2],
+            "fileID": ""
     }
 
 def createBatch(size=5):
@@ -47,18 +49,31 @@ content = {
     "projects": createBatch()
 }
 
+def downloadImage(imageURL):
+    fileID = str(uuid.uuid4())
+    fileName = fileID + ".png"
+    imageData = requests.get(imageURL).content
+    with open("./images/" + fileName, "wb") as imageFile:
+        imageFile.write(imageData)
+        imageFile.close()
+
+    return fileName, fileID
+
 SEARCH_PARAMS = {
-    "num": 1,
-    "fileType": "png",
-    "safe": "high"
+    "key": PIXABAY_KEY,
+    "lang": "en",
+    "image_type": "photo",
+    "orientation": "horizontal",
+    "safesearch": "true",
 }
-with GoogleImagesSearch(IMAGES_API_KEY, IMAGES_CX) as imageSearch:
-    for index, project in enumerate(content["projects"]):
-        search_params = {**SEARCH_PARAMS, **{"q": project["title"], "imgType": random.choice(["clipart", "stock"])}}
-        id = str(uuid.uuid4())
-        fileName = "{}.png".format(id)
-        imageSearch.search(search_params, path_to_dir="./images/", custom_image_name=fileName, width=600, height=400)
-        if (isfile("./images/" + fileName)): content["project"][index]["id"] = id
+
+for index, project in enumerate(content["projects"]):
+    search_params = {**SEARCH_PARAMS, **{"q": project["title"]}}
+    response = requests.get(PIXABAY_URL, search_params).json()
+    
+    if (response["totalHits"] > 0):
+        fileName, fileID = downloadImage(response["hits"][0]["previewURL"])
+        content["projects"][index]["fileID"] = fileID
 
 print("Saving projects.json")
 with open("./projects.json", "w") as projectsFile:
